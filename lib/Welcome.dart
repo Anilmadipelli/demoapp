@@ -14,16 +14,6 @@ class Welcome extends StatelessWidget {
       body: Column(
         children:[
           Container(
-            width:w ,
-            height: h*0.6,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                      "img/"
-                  ),
-                  fit: BoxFit.cover
-              ),
-            ),
             child:
             Column(
               children: [

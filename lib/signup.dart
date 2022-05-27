@@ -1,8 +1,12 @@
 import 'package:demoapp/Auth.dart';
+import 'package:demoapp/googlesignin.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import 'google.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -76,7 +80,7 @@ class SignUpPage extends StatelessWidget {
                     controller: emailController,
                     decoration:InputDecoration(
                       hintText: 'Email',
-                        prefixIcon: Icon(Icons.email, color:Colors.deepOrangeAccent),
+                      prefixIcon: Icon(Icons.email, color:Colors.deepOrangeAccent),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(
@@ -148,71 +152,80 @@ class SignUpPage extends StatelessWidget {
               AuthController.instance.register(emailController.text.trim(), passwordController.text.trim());
             },
             child: Container(
-              width:w*0.5 ,
-              height:h*0.2,
-              decoration: BoxDecoration(
-                borderRadius:BorderRadius.circular(30),
-                image: DecorationImage(
-                    image: AssetImage(
-                        "img/imgbut1.png"
-                    ),
-                    fit: BoxFit.cover
-                ),
-              ),
+
               child:   Center(
                 child: Text(
                   "sign up",
                   style:  TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ),
             ),
           ),
+          // RichText(text:TextSpan(
+          //     text: "Don\'t have an Account?",
+          //     style: TextStyle(
+          //         color: Colors.grey[300],
+          //         fontSize: 22
+          //     ),
+          //     children: [
+          //       TextSpan(
+          //           text: "Sign with google",
+          //           style: const TextStyle(
+          //               color: Colors.black,
+          //               fontSize: 22,
+          //               fontWeight: FontWeight.bold
+          //           ),
+          //           recognizer: TapGestureRecognizer()..onTap=()=>Get.to(()=>Googlesignin())
+          //       ),
+          //     ]
+          // ),
+          // ),
           SizedBox(height: 20,),
           RichText(text:
           TextSpan(
-            recognizer: TapGestureRecognizer()..onTap=()=>Get.back(),
-            text: "Have an Account?",
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.grey[500],
-            )
+              recognizer: TapGestureRecognizer()..onTap=()=>Get.back(),
+              text: "Have an Account?",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey[500],
+              )
           )),
           SizedBox(height: 30,),
           RichText(text:TextSpan(
-              text: "Signup by following",
-              style: TextStyle(
-                  color: Colors.blue[300],
-                  fontSize: 15
+            text: "Signup by following",
+            style: TextStyle(
+                color: Colors.blue[300],
+                fontSize: 15
 
-              ),
+            ),
 
           ),),
-         Wrap(
-           children:
-           List<Widget>.generate(
-             2,
-               (index){
-               return Padding(
-                 padding: const EdgeInsets.all(10.0),
-                 child: CircleAvatar(
-                   radius: 30,
-                   backgroundColor: Colors.grey[500],
-                   child: CircleAvatar(
-                     backgroundColor: Colors.white,
-                     radius: 25,
-                     backgroundImage: AssetImage(
-                       "img/"+images[index],
-                     ),
-                   ),
-                 ),
-               );
-               }
-           ),
-         ),
+          Wrap(
+            children:
+            List<Widget>.generate(
+                2,
+                    (index){
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.grey[500],
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 25,
+                        backgroundImage: AssetImage(
+                          "img/"+images[index],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+            ),
+          ),
         ],
       ),
     );

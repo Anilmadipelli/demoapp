@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
+import 'Homepage.dart';
 import 'Login.dart';
 import 'Welcome.dart';
 
@@ -23,11 +24,10 @@ class AuthController extends GetxController{
      if (user == null) {
            print("login page");
            Get.offAll(()=>Login);
-
      }
      else
        {
-         Get.offAll(()=>Welcome(email:user.email!));
+         Get.offAll(()=> Welcome(email: user.email!));
        }
    }
    Future<void> register(String email,password)
