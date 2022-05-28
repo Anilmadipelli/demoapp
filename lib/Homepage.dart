@@ -1,5 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:demoapp/Auth.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import 'Login.dart';
 
 class HomePage extends StatefulWidget {
   String email;
@@ -197,28 +202,29 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center( child:
-    GestureDetector(
-      onTap: ()
-      {
-        AuthController.instance.logout();
-      },
-      child: Container(
-        child:   Center(
-          child: Text(
-            "Sign out",
-            style:  TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+    return Center(
+      child: RichText(
+          text:TextSpan(
+          text: "To ",
+          style: TextStyle(
+              color: Colors.grey[300],
+              fontSize: 22
           ),
-        ),
+          children: [
+            TextSpan(
+                text: "logout",
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold
+                ),
+                recognizer: TapGestureRecognizer()..onTap=()=>Get.to(()=>const Login())
+            ),
+          ]
       ),
-    ),
-
-
+        ),
     );
+
   }
 }
 

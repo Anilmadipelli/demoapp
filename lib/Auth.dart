@@ -27,7 +27,7 @@ class AuthController extends GetxController{
      }
      else
        {
-         Get.offAll(()=> Welcome(email: user.email!));
+         Get.offAll(()=> HomePage(email: user.email!));
        }
    }
    Future<void> register(String email,password)
